@@ -12,5 +12,11 @@
       "en": "Signup",
       "de": "Anmelden"
     }
+  },
+  "map": {
+    "title": {
+      "en": "Map",
+      "de": "Karte"
+    }
   }
 }

@@ -1,42 +1,30 @@
 import React, { Component } from "react";
 import "./App.css";
 
-// import locales from "./locales.json";
-import navbarLocales from "./locales.navbar.json";
+import { Route } from "react-router-dom";
 
-const Navbar = props => {
-  console.log(props.lang);
-  return (
-    <nav>
-      <a>{navbarLocales.homepage[props.lang]}</a>
-      <a>{navbarLocales.login[props.lang]}</a>
-      <a>{navbarLocales.signup[props.lang]}</a>
-    </nav>
-  );
-};
+// import locales from "./locales.json";
+
+import Map from "./Map";
+import Navbar from "./Navbar";
 
 export default class App extends Component {
-  state = {
-    lang: "de"
-  };
-
   changeLang = () => {
-    if (this.state.lang === "de") {
-      this.setState({
-        lang: "en"
-      });
-    } else if (this.state.lang === "en") {
-      this.setState({
-        lang: "de"
-      });
+    const lang = localStorage.getItem("lang");
+    if (lang === "de") {
+      localStorage.setItem("lang", "en");
+    } else if (lang === "en") {
+      localStorage.setItem("lang", "de");
     }
+    this.forceUpdate(); // to force re-rendering the component
   };
 
   render() {
     return (
       <div className="App">
-        <Navbar lang={this.state.lang} />
+        <Navbar />
         <button onClick={this.changeLang}>change lang</button>
+        <Route path="/map" component={Map} />
       </div>
     );
   }

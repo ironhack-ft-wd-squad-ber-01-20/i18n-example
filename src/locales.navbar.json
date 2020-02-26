@@ -10,5 +10,9 @@
   "signup": {
     "en": "Signup",
     "de": "Anmelden"
+  },
+  "map": {
+    "en": "View Map",
+    "de": "Karte anschauen"
   }
 }
