@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
-function App() {
+// import locales from "./locales.json";
+import navbarLocales from "./locales.navbar.json";
+
+const Navbar = props => {
+  console.log(props.lang);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <nav>
+      <a>{navbarLocales.homepage[props.lang]}</a>
+      <a>{navbarLocales.login[props.lang]}</a>
+      <a>{navbarLocales.signup[props.lang]}</a>
+    </nav>
   );
-}
+};
 
-export default App;
+export default class App extends Component {
+  state = {
+    lang: "de"
+  };
+
+  changeLang = () => {
+    if (this.state.lang === "de") {
+      this.setState({
+        lang: "en"
+      });
+    } else if (this.state.lang === "en") {
+      this.setState({
+        lang: "de"
+      });
+    }
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Navbar lang={this.state.lang} />
+        <button onClick={this.changeLang}>change lang</button>
+      </div>
+    );
+  }
+}

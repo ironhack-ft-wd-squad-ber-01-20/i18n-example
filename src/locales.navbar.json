@@ -1,0 +1,14 @@
+{
+  "homepage": {
+    "en": "Homepage",
+    "de": "Hauptseite"
+  },
+  "login": {
+    "en": "Login",
+    "de": "Einloggen"
+  },
+  "signup": {
+    "en": "Signup",
+    "de": "Anmelden"
+  }
+}
